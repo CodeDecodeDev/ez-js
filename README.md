@@ -1,5 +1,10 @@
-# ez-js
-Makes making websites ezpz!
+# EZ-JS
+Makes generating websites ezpz!
 
-## Don't use this (just yet)
-This project is still in development. Though it works, some parts of it deserve a re-write, specially the linker.
+![Alt text](banner.png "banner")
+
+## About
+Ez-JS is a simple static site generator, call it just a bunch of aliases or whatever you want.
+
+I made EzJS to help me with my personal website's blog posts. The code is bad and weird, might even seem useless to some, but someone does find it useful (me.)
+Any suggestions/improvements are welcome!
