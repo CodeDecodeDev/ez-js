@@ -133,6 +133,8 @@ if (args.length > 2) {
 } else {console.log("No css file specified, taking non existent \"style.css\" as css file."); var css_file = "style.css"}
 
 
+const parsed = mark(fs.readFileSync(in_file).toString())
+
 var html = `
 <!DOCTYPE html>
 <html lang="en">
@@ -144,7 +146,7 @@ var html = `
     <link rel="stylesheet" href="`+css_file+`">
 </head>
 <body>`
-+mark(fs.readFileSync(in_file).toString())
++ parsed
 +`</body>
 </html>
 `
@@ -154,4 +156,3 @@ fs.writeFileSync(out_file, html, function (err) {
 })
 
 console.log("Job Completed.")
-console.log(page_title)
