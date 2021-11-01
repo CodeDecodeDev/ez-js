@@ -1,0 +1,19 @@
+. Heading 1
+.. Heading 2
+... Heading 3
+Normal Text
+Normal text also supports *bold*, _italics_, ~cuts~ and ^small^ text
+<> http://www.gnu.org/graphics/heckert_gnu.transp.small.png
+Images work ^
+> Full line code blocks
+_
+^ Line breaks
+< https://gnu.org gnu
+^ Links work
+-_-
+--> 1st
+--> 2nd
+--> 3rd
+_-_
+Lists work ^
+<t> title

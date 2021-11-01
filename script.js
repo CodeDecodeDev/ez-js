@@ -1,12 +1,17 @@
-const md_element = document.getElementById("md")
-const md_text = md_element.innerHTML
-const body_element = document.getElementsByTagName("body")[0]
-const title_element = document.getElementsByTagName("title")[0]
-const html_element = document.createElement("div")
+#!/usr/bin/env node
+
+var fs = require("fs")
 
 
-function mark(md) {
-    const lines = md.split("\n")
+
+const args = (process.argv).slice(2)
+
+
+var page_title = "Site"
+
+function mark(ez) {
+
+    const lines = ez.split("\n")
     var html = []
 
     lines.forEach(line => {
@@ -66,8 +71,8 @@ function mark(md) {
                 break
             
             
-            case "->>":
-                title_element.innerHTML = words.slice(1).join(" ")
+            case "<t>":
+                page_title = words.slice(1).join(" ")
                 line_html = ``
                 break
 
@@ -110,7 +115,43 @@ function mark(md) {
 
     return html.join("\n")
 }
-html_element.innerHTML = mark(md_text)
 
 
-body_element.appendChild(html_element)
+
+if (args.length > 0) {
+    if (fs.existsSync(args[0])) {
+        var in_file = args[0] 
+    } else {console.log(`File "${args[0]}" doesn't exist. Exiting`); process.exit(1)}
+} else {console.log("Please provide valid arguments, See manual for info. Exiting."); process.exit(1)}
+
+if (args.length > 1) {
+    var out_file = args[1]
+} else {console.log("No out file specified, taking \"out.html\" as out file."); var out_file = "out.html"}
+
+if (args.length > 2) {
+    var css_file = args[2]
+} else {console.log("No css file specified, taking \"style.css\" as css file."); var css_file = "style.css"}
+
+
+var html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>`+page_title+`</title>
+    <link rel="stylesheet" href="`+css_file+`">
+</head>
+<body>`
++mark(fs.readFileSync(in_file).toString())
++`</body>
+</html>
+`
+
+fs.writeFileSync(out_file, html, function (err) {
+    if (err) return console.log("Error writing to out file, Error: "+err)
+})
+
+console.log("Job Completed.")
+console.log(page_title)
