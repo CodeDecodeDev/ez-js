@@ -126,11 +126,11 @@ if (args.length > 0) {
 
 if (args.length > 1) {
     var out_file = args[1]
-} else {console.log("No out file specified, taking \"out.html\" as out file."); var out_file = "out.html"}
+} else {console.log("No out file specified, taking non existent \"out.html\" as out file."); var out_file = "out.html"}
 
 if (args.length > 2) {
     var css_file = args[2]
-} else {console.log("No css file specified, taking \"style.css\" as css file."); var css_file = "style.css"}
+} else {console.log("No css file specified, taking non existent \"style.css\" as css file."); var css_file = "style.css"}
 
 
 var html = `
