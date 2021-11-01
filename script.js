@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 
-var fs = require("fs")
 
 
+const fs = require("fs")
 
 const args = (process.argv).slice(2)
-
-
 var page_title = "Site"
+
 
 function mark(ez) {
 
@@ -117,7 +116,6 @@ function mark(ez) {
 }
 
 
-
 if (args.length > 0) {
     if (fs.existsSync(args[0])) {
         var in_file = args[0] 
@@ -134,8 +132,7 @@ if (args.length > 2) {
 
 
 const parsed = mark(fs.readFileSync(in_file).toString())
-
-var html = `
+const html = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
